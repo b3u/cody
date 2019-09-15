@@ -11,7 +11,7 @@ const client = new Commando.Client({
 client
     .on('error', console.error)
     .on('warn', console.warn)
-    .on('debug', console.log)
+    // .on('debug', console.log)
     .on('ready', () => {
         console.log(`Logged in as ${client.user.username}#${client.user.discriminator} (${client.user.id})`);
     })
@@ -22,7 +22,8 @@ client
 client.registry
     // Registers your custom command groups
     .registerGroups([
-        ['math', 'Math']
+        ['math', 'Math'],
+        ['other', 'Random Stuff']
     ])
 
     .registerDefaults()
