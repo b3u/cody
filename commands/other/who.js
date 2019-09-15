@@ -1,14 +1,13 @@
 const commando = require('discord.js-commando')
-require('discord.js')
 
 module.exports = class WhoCommand extends commando.Command {
     constructor(client) {
         super(client, {
-            name: "who",
-            aliases: ['user'],
+            name: "whois",
+            aliases: ['user', 'u'],
             memberName: 'who',
             description: "Displays the user's info (default is sender)",
-            examples: ['who <user>', 'who'],
+            examples: ['whois', 'whois <user>'],
             group: "other",
             args: [
                 {
@@ -22,12 +21,17 @@ module.exports = class WhoCommand extends commando.Command {
         })
     }
     async run(msg, args) {
-        const user = args.user || msg.author;
+        const member = await msg.message.guild.fetchMember(args.user || msg.author);
+
         msg.embed({
-            title: user.tag,
-            thumbnail: {url: user.displayAvatarURL},
+            color: member.displayColor,
+            title: member.user.tag,
+            thumbnail: {url: member.user.displayAvatarURL},
+            description: `${member}`,
             fields:[
-                {name: 'Joined', value: user.createdAt.toLocaleString(), inline: true}
+                {name: 'Registered', value: member.user.createdAt.toDateString(), inline: true},
+                {name: 'Joined', value: member.joinedAt.toDateString(), inline: true},
+                {name: 'Roles', value: member.roles.array().join(' '), inline: false}
             ]
         })
     }

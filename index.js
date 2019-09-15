@@ -22,7 +22,7 @@ client
 client.registry
     // Registers your custom command groups
     .registerGroups([
-        ['math', 'Math'],
+        ['mod', 'Moderation'],
         ['other', 'Random Stuff']
     ])
 
