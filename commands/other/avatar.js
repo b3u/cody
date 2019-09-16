@@ -7,7 +7,7 @@ module.exports = class AvatarCommand extends commando.Command {
             aliases: ['av'],
             memberName: 'avatar',
             description: "Displays the user's avatar (default is sender's avatar)",
-            examples: ['avatar', 'avatar <user>'],
+            examples: ['avatar', 'avatar [user]'],
             group: "other",
             args: [
                 {

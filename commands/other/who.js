@@ -7,7 +7,7 @@ module.exports = class WhoCommand extends commando.Command {
             aliases: ['user', 'u'],
             memberName: 'who',
             description: "Displays the user's info (default is sender)",
-            examples: ['whois', 'whois <user>'],
+            examples: ['whois', 'whois [user]'],
             group: "other",
             args: [
                 {
